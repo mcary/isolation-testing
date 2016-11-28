@@ -9,5 +9,6 @@ RSpec.describe Cart do
   it "can have items added to it" do
     cart = Cart.new
     cart.add(Object.new)
+    expect(cart.empty?).to be false
   end
 end
