@@ -11,4 +11,13 @@ RSpec.describe Cart do
     cart.add(Object.new)
     expect(cart.empty?).to be false
   end
+
+  it "changes empty? when adding items" do
+    cart = Cart.new
+    expect {
+      cart.add(Object.new)
+    }.to change {
+      cart.empty?
+    }.from(true).to(false)
+  end
 end
