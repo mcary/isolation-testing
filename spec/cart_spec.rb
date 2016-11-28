@@ -19,4 +19,10 @@ RSpec.describe Cart do
       cart.empty?
     }.from(true).to(false)
   end
+
+  PriceableStub = Struct.new(:price)
+  it "computes total price" do
+    cart.add(PriceableStub.new(10))
+    expect(cart.total_price).to eq 10
+  end
 end
