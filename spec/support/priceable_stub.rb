@@ -1,0 +1,1 @@
+PriceableStub = Struct.new(:price)

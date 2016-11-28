@@ -1,4 +1,5 @@
 require_relative "../lib/cart"
+require_relative "support/priceable_stub"
 
 RSpec.describe Cart do
   let(:cart) { Cart.new }
@@ -20,7 +21,6 @@ RSpec.describe Cart do
     }.from(true).to(false)
   end
 
-  PriceableStub = Struct.new(:price)
   it "computes total price" do
     cart.add(PriceableStub.new(10))
     expect(cart.total_price).to eq 10
