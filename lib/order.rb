@@ -13,6 +13,7 @@ class Order
   end
 
   def accept_payment(amount)
+    raise InvalidStateError unless valid?
     @payments.push amount
   end
 

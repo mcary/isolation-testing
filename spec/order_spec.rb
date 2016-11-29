@@ -1,4 +1,5 @@
 require_relative "../lib/order"
+require_relative "../lib/invalid_state_error"
 require_relative "support/priceable_stub"
 require_relative "support/item_holder_stub"
 
@@ -33,6 +34,13 @@ RSpec.describe Order do
     order.accept_payment(5)
     expect(order.paid?).to be false
     expect(order.amount_due).to eq 5
+  end
+
+  it "refuses payment on invalid order" do
+    order = Order.new([])
+    expect {
+      order.accept_payment(10)
+    }.to raise_error(InvalidStateError)
   end
 
   it "forbids empty orders" do
