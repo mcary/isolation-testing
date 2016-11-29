@@ -4,7 +4,7 @@ class Order
   end
 
   def initialize(items)
-    @items = items
+    @items = items.dup
   end
 
   def amount_due

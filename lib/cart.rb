@@ -16,6 +16,6 @@ class Cart
   end
 
   def items
-    @items
+    @items.dup
   end
 end

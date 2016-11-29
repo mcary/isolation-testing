@@ -29,4 +29,11 @@ RSpec.describe Cart do
     cart.add(PriceableStub.new(10))
     expect(cart.total_price).to eq 10
   end
+
+  it "keeps items private" do
+    # Ensure mutations to cart.items will not change the cart.
+    items = cart.items
+    items.push Object.new
+    expect(cart.empty?).to be true
+  end
 end
