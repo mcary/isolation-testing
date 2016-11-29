@@ -1,9 +1,9 @@
 class CartView
   def initialize
-    @erb = ERB.new(File.read(file_name))
+    @erb = ERB.new(File.read(file_name), nil, "<>")
   end
 
-  def render
+  def render(cart)
     @erb.result(binding)
   end
 

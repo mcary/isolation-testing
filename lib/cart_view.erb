@@ -1,1 +1,6 @@
-Cart
+Cart price: $<%= cart.total_price %>
+
+Items:
+<% cart.items.each do |item| %>
+* <%= item.name %> ($<%= item.price %>)
+<% end %>
