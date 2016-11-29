@@ -20,6 +20,10 @@ class Order
     amount_due <= 0
   end
 
+  def valid?
+    !@items.empty?
+  end
+
   private
 
   def total_price

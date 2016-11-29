@@ -34,4 +34,14 @@ RSpec.describe Order do
     expect(order.paid?).to be false
     expect(order.amount_due).to eq 5
   end
+
+  it "forbids empty orders" do
+    order = Order.new([])
+    expect(order.valid?).to be false
+  end
+
+  it "permits non-empty orders" do
+    order = Order.new([PriceableStub.new(10)])
+    expect(order.valid?).to be true
+  end
 end
