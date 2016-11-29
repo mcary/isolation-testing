@@ -1,0 +1,1 @@
+ItemHolderStub = Struct.new(:items)

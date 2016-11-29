@@ -1,7 +1,11 @@
 require_relative "../lib/cart"
 require_relative "support/priceable_stub"
+require_relative "support/item_holder_interface"
 
 RSpec.describe Cart do
+  let(:object) { cart }
+  include_context "ItemHolder interface"
+
   let(:cart) { Cart.new }
 
   it "can be empty" do
