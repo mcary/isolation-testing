@@ -16,5 +16,13 @@ RSpec.describe CartView do
       * Bar ($5)
     }.sub(/^\n/, '').gsub(/^ {,6}/, '')
   end
+
+  it "renders empty specially" do
+    cart = Cart.new
+    result = CartView.new.render(cart)
+    expect(result).to eq %{
+      Cart is empty
+    }.sub(/^\n/, '').gsub(/^ {,6}/, '')
+  end
 end
 
