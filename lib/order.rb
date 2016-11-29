@@ -9,7 +9,7 @@ class Order
   end
 
   def amount_due
-    @items.inject(0) { |sum, item| sum + item.price }
+    total_price - total_paid
   end
 
   def accept_payment(amount)
@@ -17,6 +17,20 @@ class Order
   end
 
   def paid?
-    amount_due <= @payments.inject(0) { |sum, amt| sum + amt }
+    amount_due <= 0
+  end
+
+  private
+
+  def total_price
+    sum(@items.map(&:price))
+  end
+
+  def total_paid
+    sum(@payments)
+  end
+
+  def sum(array)
+    array.inject(0) { |sum, amt| sum + amt }
   end
 end

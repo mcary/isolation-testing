@@ -32,5 +32,6 @@ RSpec.describe Order do
     expect(order.paid?).to be false
     order.accept_payment(5)
     expect(order.paid?).to be false
+    expect(order.amount_due).to eq 5
   end
 end
