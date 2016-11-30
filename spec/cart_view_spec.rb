@@ -1,13 +1,18 @@
 require_relative "../lib/cart_view"
-require_relative "../lib/cart"
 require_relative "../lib/item"
+require_relative "support/cart_view_cart_stub"
+require_relative "support/cart_view_item_stub"
 
 RSpec.describe CartView do
   it "renders" do
-    cart = Cart.new
-    cart.add(Item.new("Foo", 10))
-    cart.add(Item.new("Bar", 5))
-    result = CartView.new.render(cart)
+    cart_stub = CartViewCartStub.new(
+      15, false,
+      [
+        CartViewItemStub.new(10, "Foo"),
+        CartViewItemStub.new(5, "Bar"),
+      ],
+    )
+    result = CartView.new.render(cart_stub)
     expect(result).to eq %{
       Cart price: $15
 
@@ -18,7 +23,7 @@ RSpec.describe CartView do
   end
 
   it "renders empty specially" do
-    cart = Cart.new
+    cart = CartViewCartStub.new(0, true, [])
     result = CartView.new.render(cart)
     expect(result).to eq %{
       Cart is empty
