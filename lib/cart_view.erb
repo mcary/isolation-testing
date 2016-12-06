@@ -5,6 +5,6 @@ Cart price: $<%= cart.total_price %>
 
 Items:
 <% cart.items.each do |item| %>
-* <%= item.name %> ($<%= item.price %>)
+<%= item_view.render(item) %>
 <% end %>
 <% end %>
