@@ -27,6 +27,7 @@ Questions
 
 * We have nearly 2x as many lines in tests than in production code.  That
   seems like a fairly high test to code ratio (1.9).  Are we doing it wrong?
+  (After isolating views, we're up to 2.5.)
 
 * Is it plausible that a developer might accidentally change the codebase in a
   way that accidentally introduces divergence between two implementors of the
